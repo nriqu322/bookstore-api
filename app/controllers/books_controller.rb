@@ -1,4 +1,4 @@
-class Api::V1::BooksController < ApplicationController
+class BooksController < ApplicationController
   before_action :set_book, only: [:show, :update, :destroy]
 
   # GET /books
@@ -18,7 +18,7 @@ class Api::V1::BooksController < ApplicationController
     @book = Book.new(book_params)
 
     if @book.save
-      render json: @book, status: :created, location: api_v1_books_path(@book)
+      render json: @book, status: :created, location: @book
     else
       render json: @book.errors, status: :unprocessable_entity
     end
